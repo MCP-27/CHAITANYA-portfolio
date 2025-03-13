@@ -53,21 +53,20 @@
         }
         .content {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 30px;
             padding-bottom: 50px;
         }
 
         .content h1{
             font-weight: bold;
             color: #fff;
-            font-family: cursive;
+            font-family: ENGRA VERS MT;
         }
         .content img {
             width: 100%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
         }
         .buttons {
             display: flex;
@@ -76,9 +75,9 @@
         }
         .buttons button {
             padding: 10px 40px;
+            border: 2px solid #000;
             background-color: #4CAF50;
             color: #fff;
-            border: none;
             cursor: pointer;
             border-radius: 25px;
             font-size: 16px;
@@ -99,6 +98,23 @@
             font-size: 20px;
             font-family: Verdana, Arial, Helvetica, sans-serif;
         }
+        .center-button:hover{
+            background-image: linear-gradient(to right,#04bbf8 0%, #042444 100%);
+        }
+
+        .note {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+}
+
     </style>
 </head>
 <body>
@@ -119,7 +135,11 @@
             <button onclick="window.location.href='https://drive.google.com/file/d/1FHrdP5fIyAL3hzxW11I8K_co5oLXQpFi/view?usp=sharing'">Resume</button>
             <button onclick="window.location.href='https://drive.google.com/file/d/17HlRvuCFQIJ6QEZthdboJcBvtoAZ0XxB/view?usp=sharing'">Research Work</button>
         </div>
-        <button class="center-button" onclick="window.location.href='ss3.html'">MCP Workflow</button>
+        <button class="center-button" onclick="window.location.href='ss3.html'">MCP WORKFLOW  ></button>
+    </div>
+
+    <div class="note">
+        <p>📝 <b>Note:</b> For the best experience, please view this site in desktop mode.</p>
     </div>
 </body>
 </html>
