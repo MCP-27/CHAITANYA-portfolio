@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Slideshow</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+        .slideshow-container {
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+            border: 8px solid #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        .active {
+            display: block;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease;
+        }
+        .pause-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease;
+        }
+        .slideshow-container:hover .controls, 
+        .slideshow-container:hover .pause-btn {
+            opacity: 1; /* Visible on hover */
+        }
+        .control-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <img class="slide active" src="https://postimage.me/images/2025/03/13/1.jpg" alt="Image 1">
+        <img class="slide" src="https://postimage.me/images/2025/03/13/2.jpg" alt="Image 2">
+        <img class="slide" src="https://postimage.me/images/2025/03/13/3.jpg" alt="Image 3">
+        <img class="slide" src="https://postimage.me/images/2025/03/13/4.jpg" alt="Image 4">
+
+        <div class="controls">
+            <button class="control-btn" onclick="prevSlide()">&#10094;</button>
+            <button class="control-btn" onclick="nextSlide()">&#10095;</button>
+        </div>
+        <button class="pause-btn" onclick="togglePause()">| |</button>
+    </div>
+
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll('.slide');
+        let interval = setInterval(showSlides, 4000); // Change every 4 seconds
+        let isPaused = false;
+
+        function showSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            clearInterval(interval);
+            slides.forEach(slide => slide.classList.remove('active'));
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+            if (!isPaused) interval = setInterval(showSlides, 4000);
+        }
+
+        function prevSlide() {
+            clearInterval(interval);
+            slides.forEach(slide => slide.classList.remove('active'));
+            index = (index - 1 + slides.length) % slides.length;
+            slides[index].classList.add('active');
+            if (!isPaused) interval = setInterval(showSlides, 4000);
+        }
+
+        function togglePause() {
+            const pauseBtn = document.querySelector('.pause-btn');
+            if (isPaused) {
+                interval = setInterval(showSlides, 4000);
+                pauseBtn.textContent = "| |";
+            } else {
+                clearInterval(interval);
+                pauseBtn.textContent = "O";
+            }
+            isPaused = !isPaused;
+        }
+    </script>
+</body>
+</html>
